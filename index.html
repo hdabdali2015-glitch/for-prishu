@@ -3,138 +3,187 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>For Prishu ❤️</title>
+    <title>Happy Hug Day Prishu! 🫂</title>
     <style>
-        :root { --soft-pink: #fce4ec; --hot-pink: #ff69b4; --deep-rose: #c2185b; }
-        body { background: linear-gradient(180deg, #fce4ec, #f8bbd0); font-family: 'Poppins', sans-serif; margin: 0; display: flex; align-items: center; justify-content: center; min-height: 100vh; overflow: hidden; color: #444; }
+        @import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;600&display=swap');
+
+        body {
+            background-color: #ffeef2;
+            font-family: 'Poppins', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: #d63384;
+            padding: 20px;
+            margin: 0;
+            overflow-x: hidden;
+        }
+
+        /* Falling Hearts Animation */
+        .heart {
+            position: fixed;
+            top: -10px;
+            font-size: 20px;
+            color: #ff4d6d;
+            user-select: none;
+            z-index: -1;
+            animation: fall linear infinite;
+        }
+
+        @keyframes fall {
+            to { transform: translateY(105vh) translateX(20px); }
+        }
+
+        .container {
+            max-width: 400px;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 30px;
+            border-radius: 30px;
+            box-shadow: 0 15px 35px rgba(255, 133, 162, 0.3);
+            margin-top: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        h1 { 
+            font-family: 'Pacifico', cursive; 
+            font-size: 28px; 
+            margin-bottom: 10px; 
+            color: #ff4d6d;
+        }
+
+        /* Bubu Dudu Styling */
+        .bubu-dudu {
+            width: 180px;
+            margin-bottom: 10px;
+        }
+
+        .gift-box {
+            background: linear-gradient(45deg, #ff85a2, #ff4d6d);
+            color: white;
+            padding: 20px;
+            width: 100%;
+            margin: 20px 0;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: 0.3s;
+            border: none;
+            font-size: 18px;
+            font-weight: 600;
+            box-shadow: 0 4px 15px rgba(255, 77, 109, 0.4);
+        }
+
+        .gift-box:hover { transform: scale(1.05); }
         
-        .hearts-bg { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; }
-        .heart-float { position: absolute; color: rgba(255, 105, 180, 0.4); animation: float 6s infinite linear; }
-        @keyframes float { 0% { transform: translateY(110vh) rotate(0deg); opacity: 1; } 100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; } }
+        .letter-section {
+            display: none; 
+            text-align: left;
+            line-height: 1.8;
+            background: #fff;
+            padding: 25px;
+            border: 2px dashed #ff85a2;
+            border-radius: 20px;
+            margin-top: 20px;
+            animation: slideUp 1s ease-out;
+        }
 
-        .container { position: relative; z-index: 10; background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(12px); padding: 35px; border-radius: 30px; box-shadow: 0 15px 35px rgba(255, 105, 180, 0.2); width: 85%; max-width: 400px; text-align: center; border: 2px solid white; }
-        .section { display: none; }
-        .active { display: block; animation: zoomIn 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
-        @keyframes zoomIn { from { transform: scale(0.5); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
 
-        .hug-gif { font-size: 85px; animation: bounce 2s infinite; display: inline-block; }
-        @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-20px); } }
+        .signature {
+            text-align: right;
+            font-family: 'Pacifico', cursive;
+            margin-top: 20px;
+            font-size: 1.2em;
+            color: #ff4d6d;
+        }
 
-        .book { width: 140px; height: 190px; background: linear-gradient(45deg, var(--hot-pink), var(--deep-rose)); margin: 25px auto; border-radius: 5px 15px 15px 5px; box-shadow: 12px 12px 25px rgba(0,0,0,0.2); cursor: pointer; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; transition: 0.8s; border-left: 8px solid #fff; }
-        .book-open { transform: rotateY(-160deg) scale(0.2); opacity: 0; }
-
-        .balloon-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 20px; }
-        .balloon { background: radial-gradient(circle at 30% 30%, #ff85c1, var(--hot-pink)); border-radius: 50% 50% 50% 50% / 40% 40% 60% 60%; height: 90px; width: 75px; margin: 0 auto; cursor: pointer; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; position: relative; transition: transform 0.1s; }
-        .balloon::after { content: ''; position: absolute; bottom: -12px; border-left: 6px solid transparent; border-right: 6px solid transparent; border-top: 12px solid var(--hot-pink); }
-        .popped { transform: scale(0); opacity: 0; transition: 0.3s; }
-
-        button { background: var(--hot-pink); color: white; border: none; padding: 15px 30px; border-radius: 50px; font-size: 1.1rem; font-weight: 600; cursor: pointer; transition: 0.3s; box-shadow: 0 8px 20px rgba(255, 105, 180, 0.3); margin-top: 20px; width: 100%; }
-        button:active { transform: scale(0.95); }
+        #play-btn {
+            background: #fff;
+            color: #ff4d6d;
+            border: 2px solid #ff4d6d;
+            padding: 8px 15px;
+            border-radius: 20px;
+            cursor: pointer;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
     </style>
 </head>
 <body>
 
-    <audio id="bgMusic" loop>
-        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
-        </audio>
+    <script>
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            heart.innerHTML = '❤️';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = Math.random() * 3 + 2 + 's';
+            heart.style.opacity = Math.random();
+            document.body.appendChild(heart);
+            setTimeout(() => { heart.remove(); }, 5000);
+        }
+        setInterval(createHeart, 300);
+    </script>
 
-    <div class="hearts-bg" id="hearts-bg"></div>
+    <audio id="bg-music" loop>
+        <source src="https://www.bensound.com/bensound-music/bensound-love.mp3" type="audio/mpeg">
+    </audio>
 
     <div class="container">
-        <div id="s1" class="section active">
-            <h1 style="color: var(--deep-rose); margin-bottom: 5px;">Hey Prishu! 🌸</h1>
-            <div class="hug-gif">🫂</div>
-            <h2 style="font-weight: 300;">Will u hug me?</h2>
-            <button onclick="startExperience()">YES! ❤️</button>
-        </div>
+        <button id="play-btn" onclick="toggleMusic()">🎵 Play Romantic Music</button>
+        
+        <br>
+        <img src="https://media.tenor.com/On7yS97_7XEAAAAi/peach-goma.gif" class="bubu-dudu" alt="Bubu Dudu Hug">
+        
+        <h1>Happy Hug Day, Prishu! 🫂</h1>
+        <p>Shiv has sent you a special surprise...</p>
+        
+        <button class="gift-box" onclick="openGift()">
+            🎁 Click to Open Your Note
+        </button>
 
-        <div id="s2" class="section">
-            <h2 style="color: var(--hot-pink);">Catch My Heart!</h2>
-            <p>I'm shy! Tap the heart to continue...</p>
-            <div id="game-heart" style="font-size: 60px; cursor: pointer; display: inline-block;" onclick="catchHeart()">❤️</div>
-        </div>
-
-        <div id="s3" class="section">
-            <h2 style="color: var(--hot-pink);">A Story for You</h2>
-            <div class="book" id="book" onclick="openBook()">📖 Open Me</div>
-            <div id="letter" style="display:none; text-align: left; background: #fff9fb; padding: 20px; border-radius: 15px; border: 1px solid var(--soft-pink); line-height: 1.6;">
-                <p style="font-weight: bold; color: var(--deep-rose);">Dearest Prishu,</p>
-                <p>Every hug from you feels like home. On this Hug Day, I just want to wrap my arms around you and never let go. You are my favorite person!</p>
-                <p style="text-align: right; font-weight: bold;">— Shiv ❤️</p>
-                <button onclick="next(4)">Tap for more...</button>
-            </div>
-        </div>
-
-        <div id="s4" class="section">
-            <h2 style="color: var(--hot-pink);">Pop for a Surprise! 🎈</h2>
-            <div class="balloon-grid">
-                <div class="balloon" onclick="pop(this)">Pop!</div>
-                <div class="balloon" onclick="pop(this)">Pop!</div>
-                <div class="balloon" onclick="pop(this)">Pop!</div>
-                <div class="balloon" onclick="pop(this)">Pop!</div>
-            </div>
-            <div id="secret-msg" style="display:none; color: var(--deep-rose); font-size: 1.2rem; font-weight: bold; margin-top: 20px; animation: pulse 1s infinite;">I LOVE YOU BBY! 😘</div>
-            <button id="final-nav" style="display:none;" onclick="next(5)">One Last Thing...</button>
-        </div>
-
-        <div id="s5" class="section">
-            <div style="background: white; padding: 20px; border-radius: 20px; border: 2px dashed var(--hot-pink);">
-                <h2 style="color: var(--hot-pink);">Always Yours</h2>
-                <p>Prishu, you make my life colorful and happy. I promise to always be there for you with a warm hug whenever you need it.</p>
-                <h3 style="margin-top: 20px;">From: Shiv</h3>
-                <h3 style="color: var(--deep-rose);">To: Prishu</h3>
-                <div style="font-size: 45px; margin-top: 10px;">♾️✨💖</div>
+        <div id="letter" class="letter-section">
+            <h3 style="text-align:center;">My Dearest Prishu, 🌹</h3>
+            <p>
+                Every time I think of you, I wish I could just reach out and give you the tightest hug. 
+                You make my world so much brighter just by being in it. On this Hug Day, 
+                I want you to know that you are my favorite person and my safest place.
+            </p>
+            <p>
+                No matter how far apart we are, I’m sending you all my warmth and love today. 
+                I promise to always be there to hold you through the good times and the bad.
+            </p>
+            <div class="signature">
+                From Shiv to Prishu ❤️
             </div>
         </div>
     </div>
 
     <script>
-        const music = document.getElementById('bgMusic');
+        const music = document.getElementById('bg-music');
+        const btn = document.getElementById('play-btn');
 
-        function startExperience() {
-            music.play().catch(e => console.log("Audio play blocked, will try later"));
-            next(2);
-        }
-
-        function next(num) {
-            document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
-            document.getElementById('s' + num).classList.add('active');
-        }
-
-        function catchHeart() {
-            const h = document.getElementById('game-heart');
-            h.style.transform = 'scale(1.5)';
-            setTimeout(() => next(3), 500);
-        }
-
-        function openBook() {
-            document.getElementById('book').classList.add('book-open');
-            setTimeout(() => {
-                document.getElementById('book').style.display = 'none';
-                document.getElementById('letter').style.display = 'block';
-            }, 600);
-        }
-
-        let popped = 0;
-        function pop(el) {
-            el.classList.add('popped');
-            popped++;
-            if(popped === 4) {
-                document.getElementById('secret-msg').style.display = 'block';
-                document.getElementById('final-nav').style.display = 'inline-block';
+        function toggleMusic() {
+            if (music.paused) {
+                music.play();
+                btn.innerText = "⏸ Pause Music";
+            } else {
+                music.pause();
+                btn.innerText = "🎵 Play Music";
             }
         }
 
-        // Animated Background
-        const bg = document.getElementById('hearts-bg');
-        for(let i=0; i<25; i++) {
-            let h = document.createElement('div');
-            h.innerHTML = '❤️';
-            h.className = 'heart-float';
-            h.style.left = Math.random() * 100 + 'vw';
-            h.style.animationDelay = Math.random() * 5 + 's';
-            h.style.fontSize = (Math.random() * 20 + 15) + 'px';
-            bg.appendChild(h);
+        function openGift() {
+            document.getElementById('letter').style.display = 'block';
+            if (music.paused) {
+                music.play();
+                btn.innerText = "⏸ Pause Music";
+            }
+            window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
         }
     </script>
 </body>
