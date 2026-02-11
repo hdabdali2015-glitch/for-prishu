@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>For Prishu ❤️</title>
+    <style>
+        :root { --pink: #ffb6c1; --dark-pink: #ff69b4; }
+        body { background-color: var(--pink); font-family: 'Comic Sans MS', cursive; margin: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 100vh; overflow-x: hidden; text-align: center; }
+        .section { display: none; width: 100%; max-width: 500px; padding: 20px; }
+        .active { display: block; animation: fadeIn 1s; }
+        
+        /* Balloon Styles */
+        .balloon-container { display: flex; justify-content: space-around; margin-top: 50px; }
+        .balloon { width: 80px; height: 100px; background: var(--dark-pink); border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; color: white; font-size: 0px; transition: transform 0.2s; }
+        .balloon.popped { background: transparent; border: 2px dashed white; font-size: 14px; color: #fff; }
+
+        /* Book Animation */
+        .book { width: 200px; height: 250px; background: white; border: 5px solid var(--dark-pink); margin: 20px auto; cursor: pointer; transition: 0.5s; border-radius: 5px 15px 15px 5px; }
+        .book-open { transform: rotateY(-20deg); background: #fffaf0; }
+        
+        button { background: var(--dark-pink); color: white; border: none; padding: 10px 20px; border-radius: 20px; font-size: 1.2rem; cursor: pointer; margin-top: 20px; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    </style>
+</head>
+<body>
+
+    <div id="s1" class="section active">
+        <h1>Will u hug me?</h1>
+        <div style="font-size: 100px;">🫂</div>
+        <button onclick="next(2)">Yes! Next ❤️</button>
+    </div>
+
+    <div id="s2" class="section">
+        <h1>Catch the Heart!</h1>
+        <p>Tap the heart to continue</p>
+        <div id="heart" style="font-size: 50px; cursor: pointer; position: relative;" onclick="next(3)">❤️</div>
+    </div>
+
+    <div id="s3" class="section">
+        <h1>Our Story</h1>
+        <div class="book" id="book" onclick="openBook()">
+            <p id="book-text" style="padding: 20px;">Tap to open...</p>
+        </div>
+        <div id="letter" style="display:none; background: white; padding: 20px; border-radius: 10px; margin-top: 10px;">
+            <h3>Dearest Prishu,</h3>
+            <p>Every hug from you feels like home. On this Hug Day, I just want to wrap my arms around you and never let go. You are my favorite person!</p>
+            <button onclick="next(4)">Next</button>
+        </div>
+    </div>
+
+    <div id="s4" class="section">
+        <h1>Pop the Balloons! 🎈</h1>
+        <div class="balloon-container">
+            <div class="balloon" onclick="pop(this)">?</div>
+            <div class="balloon" onclick="pop(this)">?</div>
+            <div class="balloon" onclick="pop(this)">?</div>
+            <div class="balloon" onclick="pop(this)">?</div>
+        </div>
+        <p style="margin-top: 30px;">(Music Playing: Perfect - Ed Sheeran)</p>
+        <button onclick="next(5)" id="final-btn" style="display:none;">One last thing...</button>
+    </div>
+
+    <div id="s5" class="section">
+        <div style="background: white; padding: 30px; border-radius: 20px; border: 3px solid var(--dark-pink);">
+            <h2>A Special Note</h2>
+            <p>Prishu, you make my life colorful and happy. I promise to always be there for you with a warm hug whenever you need it.</p>
+            <p><strong>From: Shiv</strong></p>
+            <p><strong>To: Prishu</strong></p>
+            <div style="font-size: 50px;">♾️❤️</div>
+        </div>
+    </div>
+
+    <script>
+        function next(num) {
+            document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+            document.getElementById('s' + num).classList.add('active');
+        }
+
+        function openBook() {
+            document.getElementById('book').classList.add('book-open');
+            document.getElementById('book-text').innerText = "📖 Reading...";
+            setTimeout(() => {
+                document.getElementById('letter').style.display = 'block';
+            }, 500);
+        }
+
+        let poppedCount = 0;
+        function pop(el) {
+            if(!el.classList.contains('popped')) {
+                el.classList.add('popped');
+                el.innerText = "I love you bby";
+                poppedCount++;
+                if(poppedCount === 4) document.getElementById('final-btn').style.display = 'inline-block';
+            }
+        }
+    </script>
+</body>
+</html>
