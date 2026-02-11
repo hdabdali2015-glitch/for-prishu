@@ -1,190 +1,177 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Happy Hug Day Prishu! 🫂</title>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;600&display=swap');
+<meta charset="UTF-8">
+<title>Happy Hug Day Prishu 🤍</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        body {
-            background-color: #ffeef2;
-            font-family: 'Poppins', sans-serif;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            color: #d63384;
-            padding: 20px;
-            margin: 0;
-            overflow-x: hidden;
-        }
+<style>
+*{
+  box-sizing:border-box;
+  font-family:'Poppins',sans-serif;
+}
 
-        /* Falling Hearts Animation */
-        .heart {
-            position: fixed;
-            top: -10px;
-            font-size: 20px;
-            color: #ff4d6d;
-            user-select: none;
-            z-index: -1;
-            animation: fall linear infinite;
-        }
+body{
+  margin:0;
+  background:linear-gradient(135deg,#ffdee9,#b5fffc);
+  overflow-x:hidden;
+  text-align:center;
+}
 
-        @keyframes fall {
-            to { transform: translateY(105vh) translateX(20px); }
-        }
+/* floating hearts */
+.heart{
+  position:fixed;
+  bottom:-50px;
+  font-size:20px;
+  animation:float 8s linear infinite;
+  opacity:0.6;
+}
+@keyframes float{
+  to{
+    transform:translateY(-110vh);
+    opacity:0;
+  }
+}
 
-        .container {
-            max-width: 400px;
-            text-align: center;
-            background: rgba(255, 255, 255, 0.9);
-            padding: 30px;
-            border-radius: 30px;
-            box-shadow: 0 15px 35px rgba(255, 133, 162, 0.3);
-            margin-top: 20px;
-            position: relative;
-            z-index: 1;
-        }
+header{
+  padding:50px 20px;
+}
+header h1{
+  font-size:36px;
+  animation:fadeIn 2s ease;
+}
+header p{
+  font-size:18px;
+  opacity:0.85;
+}
 
-        h1 { 
-            font-family: 'Pacifico', cursive; 
-            font-size: 28px; 
-            margin-bottom: 10px; 
-            color: #ff4d6d;
-        }
+@keyframes fadeIn{
+  from{opacity:0; transform:translateY(30px);}
+  to{opacity:1; transform:translateY(0);}
+}
 
-        /* Bubu Dudu Styling */
-        .bubu-dudu {
-            width: 180px;
-            margin-bottom: 10px;
-        }
+.section{
+  background:white;
+  margin:20px;
+  padding:25px;
+  border-radius:20px;
+  box-shadow:0 10px 30px rgba(0,0,0,0.1);
+  animation:fadeIn 1.5s ease;
+}
 
-        .gift-box {
-            background: linear-gradient(45deg, #ff85a2, #ff4d6d);
-            color: white;
-            padding: 20px;
-            width: 100%;
-            margin: 20px 0;
-            border-radius: 50px;
-            cursor: pointer;
-            transition: 0.3s;
-            border: none;
-            font-size: 18px;
-            font-weight: 600;
-            box-shadow: 0 4px 15px rgba(255, 77, 109, 0.4);
-        }
+.bubu{
+  font-size:70px;
+  animation:hug 2s infinite alternate;
+}
+@keyframes hug{
+  from{transform:scale(1);}
+  to{transform:scale(1.08);}
+}
 
-        .gift-box:hover { transform: scale(1.05); }
-        
-        .letter-section {
-            display: none; 
-            text-align: left;
-            line-height: 1.8;
-            background: #fff;
-            padding: 25px;
-            border: 2px dashed #ff85a2;
-            border-radius: 20px;
-            margin-top: 20px;
-            animation: slideUp 1s ease-out;
-        }
+button{
+  padding:12px 20px;
+  border:none;
+  border-radius:30px;
+  background:#ff6f91;
+  color:white;
+  font-size:16px;
+  cursor:pointer;
+  margin:10px;
+}
+button:hover{
+  background:#ff4f7a;
+}
 
-        @keyframes slideUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
+#result{
+  font-size:22px;
+  margin-top:15px;
+  color:#ff4f7a;
+}
 
-        .signature {
-            text-align: right;
-            font-family: 'Pacifico', cursive;
-            margin-top: 20px;
-            font-size: 1.2em;
-            color: #ff4d6d;
-        }
-
-        #play-btn {
-            background: #fff;
-            color: #ff4d6d;
-            border: 2px solid #ff4d6d;
-            padding: 8px 15px;
-            border-radius: 20px;
-            cursor: pointer;
-            margin-bottom: 15px;
-            font-weight: bold;
-        }
-    </style>
+/* footer */
+footer{
+  padding:30px;
+  font-size:16px;
+  opacity:0.85;
+}
+</style>
 </head>
+
 <body>
 
-    <script>
-        function createHeart() {
-            const heart = document.createElement('div');
-            heart.classList.add('heart');
-            heart.innerHTML = '❤️';
-            heart.style.left = Math.random() * 100 + 'vw';
-            heart.style.animationDuration = Math.random() * 3 + 2 + 's';
-            heart.style.opacity = Math.random();
-            document.body.appendChild(heart);
-            setTimeout(() => { heart.remove(); }, 5000);
-        }
-        setInterval(createHeart, 300);
-    </script>
+<header>
+  <h1>Happy Hug Day, Prishu 🤍</h1>
+  <p>Some hugs don’t need words… they just feel like home.</p>
+</header>
 
-    <audio id="bg-music" loop>
-        <source src="https://www.bensound.com/bensound-music/bensound-love.mp3" type="audio/mpeg">
-    </audio>
+<div class="section">
+  <div class="bubu">🐻🤍🐻</div>
+  <p>
+    This little space is made only for you, Prishu.  
+    A soft hug, wrapped in pixels, just to remind you  
+    how safe, warm and special you are to me.
+  </p>
+</div>
 
-    <div class="container">
-        <button id="play-btn" onclick="toggleMusic()">🎵 Play Romantic Music</button>
-        
-        <br>
-        <img src="https://media.tenor.com/On7yS97_7XEAAAAi/peach-goma.gif" class="bubu-dudu" alt="Bubu Dudu Hug">
-        
-        <h1>Happy Hug Day, Prishu! 🫂</h1>
-        <p>Shiv has sent you a special surprise...</p>
-        
-        <button class="gift-box" onclick="openGift()">
-            🎁 Click to Open Your Note
-        </button>
+<div class="section">
+  <h2>💌 A Small Note</h2>
+  <p>
+    Every hug has a story, and every story has a feeling.  
+    If I could, I’d pause time just to stay in that moment  
+    where everything feels calm, gentle, and right — like you.
+  </p>
+</div>
 
-        <div id="letter" class="letter-section">
-            <h3 style="text-align:center;">My Dearest Prishu, 🌹</h3>
-            <p>
-                Every time I think of you, I wish I could just reach out and give you the tightest hug. 
-                You make my world so much brighter just by being in it. On this Hug Day, 
-                I want you to know that you are my favorite person and my safest place.
-            </p>
-            <p>
-                No matter how far apart we are, I’m sending you all my warmth and love today. 
-                I promise to always be there to hold you through the good times and the bad.
-            </p>
-            <div class="signature">
-                From Shiv to Prishu ❤️
-            </div>
-        </div>
-    </div>
+<div class="section">
+  <h2>🎮 Love Game</h2>
+  <p>What fixes a bad day instantly?</p>
 
-    <script>
-        const music = document.getElementById('bg-music');
-        const btn = document.getElementById('play-btn');
+  <button onclick="check('hug')">A Hug 🤍</button>
+  <button onclick="check('sleep')">Sleep 😴</button>
+  <button onclick="check('food')">Food 🍫</button>
 
-        function toggleMusic() {
-            if (music.paused) {
-                music.play();
-                btn.innerText = "⏸ Pause Music";
-            } else {
-                music.pause();
-                btn.innerText = "🎵 Play Music";
-            }
-        }
+  <div id="result"></div>
+</div>
 
-        function openGift() {
-            document.getElementById('letter').style.display = 'block';
-            if (music.paused) {
-                music.play();
-                btn.innerText = "⏸ Pause Music";
-            }
-            window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
-        }
-    </script>
+<div class="section">
+  <h2>🎵 Our Song</h2>
+  <p>Press play and feel it.</p>
+
+  <!-- Legal embed (no lyrics shown) -->
+  <iframe width="100%" height="200"
+    src="https://www.youtube.com/embed/0p6C9L8kZlE"
+    frameborder="0"
+    allow="autoplay; encrypted-media"
+    allowfullscreen>
+  </iframe>
+</div>
+
+<footer>
+  From Shiv to Prishu 🤍
+</footer>
+
+<script>
+function check(ans){
+  if(ans === 'hug'){
+    document.getElementById('result').innerHTML =
+    "Correct 🥹💞<br>Sending you the tightest hug 🤍🤍<br>🐻🤍🐻";
+  }else{
+    document.getElementById('result').innerHTML =
+    "Nice try 😄 but the answer is always a hug 🤍";
+  }
+}
+
+// hearts generator
+setInterval(()=>{
+  const h=document.createElement('div');
+  h.className='heart';
+  h.innerHTML='🤍';
+  h.style.left=Math.random()*100+'vw';
+  h.style.animationDuration=5+Math.random()*5+'s';
+  document.body.appendChild(h);
+  setTimeout(()=>h.remove(),9000);
+},500);
+</script>
+
 </body>
 </html>
